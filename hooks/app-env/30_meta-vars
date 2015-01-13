@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -eo pipefail; [[ -n "$PLUSHU_TRACE" ]] && set -x
+
+printf "PLUSHU_APP=%q\n" $1
+
+# TODO: hook domains, set PLUSHU_APP_DOMAINS as space-separated string
+# TODO: list addons, set PLUSHU_APP_ADDONS as space-separated string
