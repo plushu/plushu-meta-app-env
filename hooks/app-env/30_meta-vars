@@ -3,5 +3,12 @@ set -eo pipefail; [[ -n "$PLUSHU_TRACE" ]] && set -x
 
 printf "PLUSHU_APP=%q\n" $1
 
-# TODO: hook domains, set PLUSHU_APP_DOMAINS as space-separated string
-# TODO: list addons, set PLUSHU_APP_ADDONS as space-separated string
+# list what domains are set, even if there aren't any,
+# as a space-separated list
+printf "PLUSHU_APP_DOMAINS=%q\n" \
+  "$("$PLUSHU_ROOT/lib/plushook" app-domains "$app" | paste -sd ' ')"
+
+# provide PLUSHU_APP_ADDONS as space-separated list of addons
+if [[ -d "$PLUSHU_APPS_DIR/$1/addons" ]]; then
+  printf "PLUSHU_APP_ADDONS=%q\n" "$(ls "$PLUSHU_APPS_DIR/$1/addons"/*)"
+fi
