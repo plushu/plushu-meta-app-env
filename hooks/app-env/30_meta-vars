@@ -10,5 +10,5 @@ printf "PLUSHU_APP_DOMAINS=%q\n" \
 
 # provide PLUSHU_APP_ADDONS as space-separated list of addons
 if [[ -d "$PLUSHU_APPS_DIR/$1/addons" ]]; then
-  printf "PLUSHU_APP_ADDONS=%q\n" "$(ls "$PLUSHU_APPS_DIR/$1/addons"/*)"
+  printf "PLUSHU_APP_ADDONS=%q\n" "$(ls "$PLUSHU_APPS_DIR/$1/addons")"
 fi
